@@ -3,17 +3,19 @@
   <br>
     Sim7600-MT7688
 </h1>
-<p>Integrando o modem Qualcomm-Sim7600SA (3g/4g) em um MT7688 da hi-link (rodando Open-WRT)</p>
+<p>Integrating the Qualcomm-Sim7600SA modem (3g / 4g) into a hi-link MT7688 (running Open-WRT)</p>
+(☝️ in firmware has a ready image, with the necessary packages already installed and the network already updated.)
+<br>
 <br>
 
-## Pré requisitos :
+## Prerequisites :
 - Qualcomm-Sim7600XX. 
 - hlk-mt76x8. 
 - Open-WRT image builder SKD. 
 - PC linux.
 
-## Verificando se está tudo preparado :
-Certifique-se que sua imagem Open-WRT tem os seguintes pacotes ->
+## Verifying that everything is prepared :
+Make sure your Open-WRT image has the following packages ->
 - comgt
 - kmod-usb2
 - kmod-usb-ohci
@@ -29,9 +31,9 @@ Certifique-se que sua imagem Open-WRT tem os seguintes pacotes ->
 - ppp
 - kmod-usb-serial
 
-Após compilar a imagem (ou instalar os pacotes) inicie o MT7688 com o Sim7600 na porta USB
+After compiling the image (or installing the packages) start MT7688 with Sim7600 on the USB port
 
-Com o comando dmesg observe se o módulo foi iniciado corretamente ->
+With the dmesg command, check if the module started correctly ->
 ```
 [   18.991545] usbcore: registered new interface driver usbserial_generic
 [   19.004673] usbserial: USB Serial support registered for generic
@@ -66,17 +68,17 @@ Com o comando dmesg observe se o módulo foi iniciado corretamente ->
 [   21.650686] usbcore: registered new interface driver qcserial
 [   21.662312] usbserial: USB Serial support registered for Qualcomm USB modem
 ```
-Se nenhum erro foi reportado, podemos continuar :)
+If no errors were reported, we can continue :)
 
-## Configurando a conexão wwan
-Agora que o Sim7600 está integrado com o MT7688 podemos configurar os parâmetros de wwan ->
+## Configuring the wwan connection
+Now that Sim7600 is integrated with MT7688 we can configure the wwan parameters ->
 ```
 cd ..
 ```
 ```
 cd etc/config
 ```
-Usando o nano (ou qualquer outro editor de texto) adcione a seguinte configuração no arquivo network ->
+Using nano (or any other text editor) add the following configuration to the network file ->
 ```
 nano network | vi network
 ```
@@ -90,16 +92,16 @@ config interface wan
         option service ip
         option proto   3g
 ```
-Onde
+on
 <br>
 - 1
 ```
         option pincode XXXX
 ```
-"XXXX" é o senha pin do chip que está sendo utilizado
+"XXXX" is the pin password of the chip being used
 <br>
 <strong> 
-Essa parte não é obrigatória, só adcione se for necessário
+This part is not mandatory, only add it if necessary
 </strong>
 <br>
 - 2
@@ -107,7 +109,7 @@ Essa parte não é obrigatória, só adcione se for necessário
         option apn     claro.com.br
 ```
 <strong>
-Troque "claro.com.br" pelo apn de sua operadora
+Change "claro.com.br" to your mobile carrier's apn
 </strong>
 <br>
 <br>
@@ -118,7 +120,7 @@ Troque "claro.com.br" pelo apn de sua operadora
         option service ip 
 ```
 <strong> 
-"ip" é o umts (Universal Mobile Telecommunications System) que sua operadora utiliza |IP|PPP|IPv6|IPv4v6|
+"ip" is the umts (Universal Mobile Telecommunications System) that your operator uses | IP | PPP | IPv6 | IPv4v6 |
 </strong>
 <br>
 <br>
@@ -136,9 +138,9 @@ Proto -> 3g/4g
 <br>
 <br>
 
- Se seguir esses passos esssa integração deve funcionar. Espero ter ajudado :)
+ If you follow these steps, this integration should work. Hope this helps :)
  <br>
- by Popoviczorigin main
+ by Popovicz. ͡•_ゝ ͡•
 
 
 
