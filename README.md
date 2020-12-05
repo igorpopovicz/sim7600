@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="public/sim.jpg" width="100">
+  <img src="public/meupau.png" width="100">
   <br>
     Sim7600-MT7688
 </h1>
